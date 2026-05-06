@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css">
+    <script type="module" src="/src/main.ts"></script>
 </head>
 <body>
 
@@ -41,27 +41,6 @@
         <div class="hero-cta-row">
           <button class="hero-cta">Enroll today &#8599;</button>
           <button class="hero-cta-secondary">Explore programs</button>
-        </div>
-      </div>
-      <div class="hero-aside">
-        <div class="hero-quote-card">
-          <div class="interject-quote-mark">&ldquo;</div>
-          <div class="interject-quote">Small habits, repeated daily, build the kind of academic confidence no cram session ever could.</div>
-          <div class="interject-attribution">The JnB Prep Philosophy</div>
-        </div>
-        <div class="hero-stats">
-          <div class="stat">
-            <div class="stat-value">30</div>
-            <div class="stat-label">Minutes daily</div>
-          </div>
-          <div class="stat">
-            <div class="stat-value">2</div>
-            <div class="stat-label">Specialist instructors</div>
-          </div>
-          <div class="stat">
-            <div class="stat-value">5–10</div>
-            <div class="stat-label">Grade range</div>
-          </div>
         </div>
       </div>
     </div>
@@ -298,47 +277,12 @@
         <h2 class="contact-heading">Ready to start? <em>Let's talk.</em></h2>
         <p class="contact-desc">Tell us about your student and we'll get back to you within 24 hours with program details and next steps.</p>
       </div>
-
-      <form class="form-grid">
-        <div class="form-row">
-          <div class="form-field">
-            <label class="form-label">Parent / Student Name</label>
-            <input type="text" class="form-input" placeholder="Your name" />
-          </div>
-          <div class="form-field">
-            <label class="form-label">Email</label>
-            <input type="email" class="form-input" placeholder="you@email.com" />
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-field">
-            <label class="form-label">Student Grade</label>
-            <select class="form-select">
-              <option>Select grade level</option>
-              <option>Grade 5</option>
-              <option>Grade 6</option>
-              <option>Grade 7</option>
-              <option>Grade 8</option>
-              <option>Grade 9</option>
-              <option>Grade 10</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label class="form-label">Program of Interest</label>
-            <select class="form-select">
-              <option>Select a program</option>
-              <option>SAT/ACT Vocabulary &amp; Reading</option>
-              <option>RTDW — Reading, Thinking, Discussing &amp; Writing</option>
-              <option>Not sure — please advise</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-field">
-          <label class="form-label">Message</label>
-          <textarea class="form-textarea" placeholder="Tell us about your student's goals or any questions you have..."></textarea>
-        </div>
-        <button type="submit" class="form-submit">Send inquiry &#8599;</button>
-      </form>
+      <div class="contact-cta">
+        <a href="mailto:JnBPrep2023@gmail.com?subject=JnB%20Prep%20Inquiry" class="contact-mailto">
+          <span class="mailto-label">Email us</span>
+          <span class="mailto-address">JnBPrep2023@gmail.com</span>
+        </a>
+      </div>
     </div>
   </section>
 
