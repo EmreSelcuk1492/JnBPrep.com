@@ -41,6 +41,7 @@ html {
   font-family: var(--sans);
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -83,13 +84,14 @@ body {
   color: var(--sun-deep);
 }
 .nav-links { display: flex; gap: 36px; list-style: none; }
-.nav-links li {
+.nav-links a {
   font-family: var(--mono);
   font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--ink-mute); cursor: pointer;
+  text-decoration: none;
   transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.nav-links li:hover { color: var(--paper); }
+.nav-links a:hover { color: var(--paper); }
 
 /* ═══════════════════════════════════════════
    HERO — split grid layout
@@ -143,12 +145,14 @@ body {
 
 .hero-cta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
 .hero-cta {
+  display: inline-block;
   background: var(--sun-deep);
   color: var(--paper);
   font-family: var(--mono);
   font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
   padding: 18px 36px; border: none; border-radius: 6px;
   cursor: pointer;
+  text-decoration: none;
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .hero-cta:hover {
@@ -156,11 +160,13 @@ body {
   box-shadow: 0 12px 32px -8px rgba(184,134,42,0.3);
 }
 .hero-cta-secondary {
+  display: inline-block;
   background: transparent; color: var(--sky);
   font-family: var(--mono);
   font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
   padding: 18px 4px; border: none; cursor: pointer;
   border-bottom: 1px solid var(--sky-deep);
+  text-decoration: none;
   transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .hero-cta-secondary:hover { color: var(--paper); }

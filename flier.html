@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JnB Prep — Program Flier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:        #1a2630;
+      --ink-soft:   #4a5660;
+      --ink-mute:   #7d8893;
+      --paper:      #fbf8f1;
+      --paper-2:    #f4eee1;
+      --paper-3:    #ece4d2;
+      --rule:       rgba(155,199,214,0.08);
+      --sky:        #9bc7d6;
+      --sky-deep:   #2c5a7a;
+      --sky-ink:    #16334a;
+      --sun:        #e9c265;
+      --sun-deep:   #b8862a;
+      --sun-ink:    #6e4f15;
+      --leaf:       #b9c98a;
+
+      --serif: 'Fraunces', 'Times New Roman', serif;
+      --sans:  'Inter', -apple-system, system-ui, sans-serif;
+      --mono:  'JetBrains Mono', ui-monospace, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      background: #0e1a24;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    @page {
+      size: 8.5in 11in;
+      margin: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .flier {
+      width: 8.5in;
+      height: 11in;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--sans);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Background decorations */
+    .flier::before {
+      content: '';
+      position: absolute;
+      width: 700px; height: 700px;
+      right: -200px; top: -250px;
+      border-radius: 50%;
+      border: 0.5px solid rgba(233,194,101,0.06);
+      pointer-events: none;
+    }
+    .flier::after {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      left: -180px; bottom: -100px;
+      border-radius: 50%;
+      border: 0.5px solid rgba(155,199,214,0.05);
+      pointer-events: none;
+    }
+
+    /* Header */
+    .flier-header {
+      padding: 44px 52px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--paper);
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .logo span {
+      font-style: italic;
+      color: var(--sun-deep);
+    }
+    .logo-sub {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+    }
+
+    /* Divider */
+    .divider {
+      height: 0.5px;
+      background: var(--rule);
+      margin: 24px 52px;
+    }
+
+    /* Hero area */
+    .flier-hero {
+      padding: 0 52px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .flier-eyebrow {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sun);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .flier-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--sun-deep);
+    }
+
+    .flier-title {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 500;
+      color: var(--paper);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+    .flier-title em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--sun-deep);
+    }
+
+    .flier-subtitle {
+      font-size: 14px;
+      color: rgba(251,248,241,0.55);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* Programs section */
+    .programs {
+      padding: 0 52px;
+      margin-top: 28px;
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .program-card {
+      background: rgba(251,248,241,0.02);
+      border: 0.5px solid var(--rule);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .card-accent {
+      height: 3px;
+      width: 100%;
+    }
+    .card-accent-gold { background: linear-gradient(90deg, var(--sun-deep), var(--sun), transparent); }
+    .card-accent-sky { background: linear-gradient(90deg, var(--sky-ink), var(--sky-deep), transparent); }
+
+    .card-body {
+      padding: 22px 26px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .card-left {}
+
+    .card-number {
+      font-family: var(--serif);
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--sun-deep);
+      line-height: 1;
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+    .card-number.sky { color: var(--sky-deep); }
+
+    .card-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 10px;
+    }
+
+    .card-name {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--paper);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+    .card-name em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--sun-deep);
+    }
+    .card-name em.sky { color: var(--sky-deep); }
+
+    .card-desc {
+      font-size: 12px;
+      color: rgba(251,248,241,0.5);
+      line-height: 1.7;
+    }
+
+    .card-grade {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-top: 10px;
+    }
+    .grade-gold { background: rgba(233,194,101,0.1); color: var(--sun); }
+    .grade-sky { background: rgba(155,199,214,0.1); color: var(--sky); }
+
+    .card-right {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-left: 16px;
+      border-left: 0.5px solid var(--rule);
+    }
+
+    .feature {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .feature-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .dot-gold { background: var(--sun-deep); }
+    .dot-sky { background: var(--sky-deep); }
+
+    .feature-text {
+      font-size: 11px;
+      color: rgba(251,248,241,0.6);
+      line-height: 1.55;
+    }
+    .feature-text strong {
+      color: var(--paper);
+      font-weight: 500;
+    }
+
+    /* Q&A Banner */
+    .qa-banner {
+      margin: 0 52px;
+      margin-top: 18px;
+      background: linear-gradient(135deg, rgba(184,134,42,0.08), rgba(44,90,122,0.08));
+      border: 0.5px solid rgba(233,194,101,0.15);
+      border-radius: 8px;
+      padding: 22px 26px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .qa-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(233,194,101,0.1);
+      border: 1px solid var(--sun-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--sun);
+    }
+
+    .qa-content {}
+
+    .qa-title {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--paper);
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+    .qa-title em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--sun-deep);
+    }
+    .qa-desc {
+      font-size: 12px;
+      color: rgba(251,248,241,0.5);
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    .flier-footer {
+      padding: 20px 52px 36px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-left {}
+
+    .footer-contact-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 6px;
+    }
+    .footer-email {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--sun-deep);
+      letter-spacing: -0.01em;
+    }
+
+    .footer-right {
+      text-align: right;
+    }
+    .footer-tagline {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+    }
+
+    @media print {
+      html { background: none; }
+      body { padding: 0; min-height: auto; }
+      .flier { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="flier">
+
+  <!-- Header -->
+  <div class="flier-header">
+    <div class="logo"><span>JnB</span> Prep</div>
+    <div class="logo-sub">Online Academic Preparation</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Hero -->
+  <div class="flier-hero">
+    <div class="flier-eyebrow">Learn About Our Programs</div>
+    <h1 class="flier-title">Building study habits,<br><em>every single day.</em></h1>
+    <p class="flier-subtitle">A boutique online prep program built around daily routines, specialist instructors, and mentorship that turns effort into lasting confidence.</p>
+  </div>
+
+  <!-- Programs -->
+  <div class="programs">
+
+    <!-- SAT/ACT Program -->
+    <div class="program-card">
+      <div class="card-accent card-accent-gold"></div>
+      <div class="card-body">
+        <div class="card-left">
+          <div class="card-name">SAT/ACT Vocabulary &amp; <em>Reading</em></div>
+          <div class="card-desc">Daily group sessions that turn vocabulary and reading practice from a solo struggle into a shared, sustainable habit.</div>
+          <div class="card-grade grade-gold">Grades 8 – 10</div>
+        </div>
+        <div class="card-right">
+          <div class="feature">
+            <div class="feature-dot dot-gold"></div>
+            <div class="feature-text"><strong>Daily Zoom sessions</strong> — 9:00–9:30 PM. 10 vocabulary words + 1 reading question with homework.</div>
+          </div>
+          <div class="feature">
+            <div class="feature-dot dot-gold"></div>
+            <div class="feature-text"><strong>Vocabulary as a daily habit</strong> — reviewed and retained together as a group, every day.</div>
+          </div>
+          <div class="feature">
+            <div class="feature-dot dot-gold"></div>
+            <div class="feature-text"><strong>Weekly Saturday skill-building</strong> — consolidate progress and advance reading skills with instructors.</div>
+          </div>
+          <div class="feature">
+            <div class="feature-dot dot-gold"></div>
+            <div class="feature-text"><strong>Audio Vocabulary App</strong> — custom audio reinforcement to listen, repeat, and retain words anytime.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Program 02 — RTDW -->
+    <div class="program-card">
+      <div class="card-accent card-accent-sky"></div>
+      <div class="card-body">
+        <div class="card-left">
+          <div class="card-number sky">02</div>
+          <div class="card-label">Program</div>
+          <div class="card-name">RTDW — Reading, Thinking, Discussing &amp; <em class="sky">Writing</em></div>
+          <div class="card-desc">More than a book club — a class that builds thinkers. Students engage critically, discuss meaningfully, and develop structured writing.</div>
+          <div class="card-grade grade-sky">Grades 5 – 8</div>
+        </div>
+        <div class="card-right">
+          <div class="feature">
+            <div class="feature-dot dot-sky"></div>
+            <div class="feature-text"><strong>Critical thinking first</strong> — we teach students to reason and analyze, not just memorize answers.</div>
+          </div>
+          <div class="feature">
+            <div class="feature-dot dot-sky"></div>
+            <div class="feature-text"><strong>Individualized attention</strong> — small classes ensure every student gets the support they need.</div>
+          </div>
+          <div class="feature">
+            <div class="feature-dot dot-sky"></div>
+            <div class="feature-text"><strong>Specialist instructors</strong> — every teacher is a subject expert with proven real-world experience.</div>
+          </div>
+          <div class="feature">
+            <div class="feature-dot dot-sky"></div>
+            <div class="feature-text"><strong>Results with purpose</strong> — better scores and the lasting confidence to sustain them.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Q&A Banner -->
+  <div class="qa-banner">
+    <div class="qa-icon">Q&amp;A</div>
+    <div class="qa-content">
+      <div class="qa-title">Have questions? <em>We'll have answers.</em></div>
+      <div class="qa-desc">Join our live Q&amp;A session to learn more about our programs, meet the instructors, and find the right fit for your student.</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="flier-footer">
+    <div class="footer-left">
+      <div class="footer-contact-label">Get in touch</div>
+      <div class="footer-email">JnBPrep2023@gmail.com</div>
+    </div>
+    <div class="footer-right">
+      <div class="footer-tagline">Online &middot; Est. Bellevue, WA</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
