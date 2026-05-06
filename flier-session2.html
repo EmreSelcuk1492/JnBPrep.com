@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JnB Prep — Information Session</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:        #141e26;
+      --ink-mute:   #6b7a86;
+      --paper:      #fbf8f1;
+      --paper-dim:  rgba(251,248,241,0.5);
+      --sun:        #e9c265;
+      --sun-deep:   #b8862a;
+      --sky-deep:   #2c5a7a;
+      --serif: 'Fraunces', 'Georgia', serif;
+      --sans:  'Inter', system-ui, sans-serif;
+      --mono:  'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: #0b1118; -webkit-font-smoothing: antialiased; }
+    @page { size: 8.5in 11in; margin: 0; }
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+    .flier {
+      width: 8.5in; height: 11in; background: var(--ink); color: var(--paper);
+      font-family: var(--sans); position: relative; overflow: hidden;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+    }
+    .bg-wash {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 35%, rgba(184,134,42,0.07) 0%, transparent 100%),
+        radial-gradient(ellipse 60% 40% at 30% 80%, rgba(44,90,122,0.05) 0%, transparent 100%),
+        radial-gradient(ellipse 50% 35% at 75% 70%, rgba(184,134,42,0.03) 0%, transparent 100%);
+    }
+    .bg-grain {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.4;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+    .corner { position: absolute; width: 44px; height: 44px; pointer-events: none; }
+    .corner::before, .corner::after { content: ''; position: absolute; background: var(--sun-deep); opacity: 0.25; }
+    .corner::before { width: 1px; height: 44px; } .corner::after { width: 44px; height: 1px; }
+    .c-tl { top: 44px; left: 44px; } .c-tl::before { top: 0; left: 0; } .c-tl::after { top: 0; left: 0; }
+    .c-tr { top: 44px; right: 44px; } .c-tr::before { top: 0; right: 0; } .c-tr::after { top: 0; right: 0; }
+    .c-bl { bottom: 80px; left: 44px; } .c-bl::before { bottom: 0; left: 0; } .c-bl::after { bottom: 0; left: 0; }
+    .c-br { bottom: 80px; right: 44px; } .c-br::before { bottom: 0; right: 0; } .c-br::after { bottom: 0; right: 0; }
+    .bg-rule { position: absolute; left: 44px; right: 44px; height: 0.5px; background: rgba(251,248,241,0.04); pointer-events: none; }
+    .bg-rule-top { top: 44px; } .bg-rule-bot { bottom: 80px; }
+    .content {
+      position: relative; z-index: 2; display: flex; flex-direction: column;
+      align-items: center; padding: 0 80px; width: 100%;
+    }
+    .eyebrow {
+      font-family: var(--mono); font-size: 13px; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--sun); margin-bottom: 40px; position: relative;
+    }
+    .eyebrow::before, .eyebrow::after { content: ''; position: absolute; top: 50%; width: 36px; height: 1px; background: var(--sun-deep); }
+    .eyebrow::before { right: calc(100% + 14px); } .eyebrow::after { left: calc(100% + 14px); }
+    .logo { font-family: var(--serif); font-size: 72px; font-weight: 500; color: var(--paper); letter-spacing: -0.04em; line-height: 1; margin-bottom: 6px; }
+    .logo span { font-style: italic; color: var(--sun-deep); }
+    .logo-sub { font-family: var(--mono); font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 44px; }
+    .sep { width: 1px; height: 44px; background: linear-gradient(to bottom, transparent, var(--sun-deep), transparent); margin-bottom: 44px; }
+    .title { font-family: var(--serif); font-size: 46px; font-weight: 500; color: var(--paper); line-height: 1.12; letter-spacing: -0.025em; margin-bottom: 20px; }
+    .subtitle { font-size: 18px; color: var(--paper-dim); line-height: 1.6; margin-bottom: 44px; max-width: 400px; }
+    .features { display: flex; flex-direction: column; gap: 16px; text-align: left; width: 100%; max-width: 400px; margin-bottom: 48px; }
+    .feat { display: flex; align-items: center; gap: 16px; }
+    .feat-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sun-deep); flex-shrink: 0; }
+    .feat-text { font-size: 17px; font-weight: 500; color: var(--paper); line-height: 1.35; }
+    .session {
+      width: 100%; max-width: 440px; background: rgba(251,248,241,0.025);
+      border: 1px solid rgba(233,194,101,0.1); border-radius: 12px;
+      padding: 30px 36px; position: relative; overflow: hidden;
+    }
+    .session::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--sun-deep), var(--sun), var(--sun-deep), transparent); }
+    .session-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sun); margin-bottom: 14px; }
+    .session-date { font-family: var(--serif); font-size: 30px; font-weight: 500; color: var(--paper); letter-spacing: -0.02em; margin-bottom: 4px; }
+    .session-time { font-size: 18px; font-weight: 500; color: var(--paper-dim); margin-bottom: 14px; }
+    .session-loc { font-size: 15px; color: var(--ink-mute); line-height: 1.5; }
+    .flier-footer { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 56px; display: flex; justify-content: space-between; align-items: flex-end; z-index: 2; }
+    .footer-email { font-family: var(--serif); font-size: 17px; font-weight: 500; color: var(--paper); }
+    .footer-url { font-family: var(--mono); font-size: 17px; font-weight: 500; letter-spacing: 0.04em; color: var(--sun-deep); text-decoration: none; }
+    .footer-url:hover { color: var(--sun); }
+    @media print { html { background: none; } body { padding: 0; min-height: auto; } }
+  </style>
+</head>
+<body>
+<div class="flier">
+  <div class="bg-wash"></div>
+  <div class="bg-grain"></div>
+  <div class="corner c-tl"></div><div class="corner c-tr"></div>
+  <div class="corner c-bl"></div><div class="corner c-br"></div>
+  <div class="bg-rule bg-rule-top"></div><div class="bg-rule bg-rule-bot"></div>
+
+  <div class="content">
+    <div class="eyebrow">Information Session</div>
+    <div class="logo"><span>JnB</span> Prep</div>
+    <div class="logo-sub">Online Academic Preparation</div>
+    <div class="sep"></div>
+    <h1 class="title">SAT/ACT Vocabulary<br>& Reading Program</h1>
+    <p class="subtitle">Daily sessions, specialist instructors, and the habits that build lasting confidence.</p>
+    <div class="features">
+      <div class="feat"><div class="feat-dot"></div><div class="feat-text">Daily Zoom sessions — 9:00–9:30 PM</div></div>
+      <div class="feat"><div class="feat-dot"></div><div class="feat-text">10 vocabulary words + reading daily</div></div>
+      <div class="feat"><div class="feat-dot"></div><div class="feat-text">Weekly Saturday skill-building</div></div>
+      <div class="feat"><div class="feat-dot"></div><div class="feat-text">Audio Vocabulary Reinforcement App</div></div>
+    </div>
+    <div class="session">
+      <div class="session-label">Live Q&A Session</div>
+      <div class="session-date">Tuesday, May 12</div>
+      <div class="session-time">10:00 AM – 12:00 PM</div>
+      <div class="session-loc">T-Town Cafe · Tacoma, WA</div>
+    </div>
+  </div>
+
+  <div class="flier-footer">
+    <div class="footer-email">jnbprep2023@gmail.com</div>
+    <a class="footer-url" href="https://www.jnbprep.com">www.jnbprep.com</a>
+  </div>
+</div>
+</body>
+</html>
