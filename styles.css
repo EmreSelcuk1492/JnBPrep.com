@@ -80,8 +80,7 @@ body {
 }
 .nav-logo span {
   font-style: italic;
-  background: linear-gradient(135deg, var(--sky-deep), var(--sun-deep));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--sun-deep);
 }
 .nav-links { display: flex; gap: 36px; list-style: none; }
 .nav-links li {
@@ -138,8 +137,7 @@ body {
 }
 .main-hero-title em {
   font-style: italic; font-weight: 400;
-  background: linear-gradient(135deg, var(--sky-deep), var(--sun));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--sun-deep);
 }
 
 .main-hero-desc {
@@ -149,8 +147,8 @@ body {
 
 .hero-cta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
 .hero-cta {
-  background: linear-gradient(135deg, var(--sun-deep), var(--sun));
-  color: var(--sun-ink);
+  background: var(--sun-deep);
+  color: var(--paper);
   font-family: var(--mono);
   font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
   padding: 18px 36px; border: none; border-radius: 6px;
@@ -159,7 +157,7 @@ body {
 }
 .hero-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px -8px rgba(233,194,101,0.35);
+  box-shadow: 0 12px 32px -8px rgba(184,134,42,0.3);
 }
 .hero-cta-secondary {
   background: transparent; color: var(--sky);
@@ -186,8 +184,7 @@ body {
 .hero-quote-card .interject-quote-mark {
   font-family: var(--serif);
   font-size: 64px; line-height: 0.6;
-  background: linear-gradient(135deg, var(--sky-deep), var(--sun));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--sun-deep);
   font-style: italic;
   margin-bottom: var(--space-sm);
 }
@@ -222,8 +219,7 @@ body {
 .stat-value {
   font-family: var(--serif);
   font-size: 28px; font-weight: 500;
-  background: linear-gradient(135deg, var(--sun-deep), var(--sun));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--sun-deep);
   margin-bottom: 4px;
 }
 .stat-label {
@@ -269,8 +265,7 @@ body {
 }
 .approach-title em {
   font-style: italic; font-weight: 400;
-  background: linear-gradient(135deg, var(--sun-deep), var(--sun));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--sun-deep);
 }
 .approach-body {
   font-size: clamp(14px, 1.4vw, 16px); color: rgba(251,248,241,0.6);
@@ -309,8 +304,7 @@ body {
 .program-number {
   font-family: var(--serif);
   font-size: 56px; font-weight: 500;
-  background: linear-gradient(135deg, var(--sky-deep), var(--sun-deep));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--sun-deep);
   line-height: 1; margin-bottom: var(--space-xs);
   letter-spacing: -0.02em;
 }
@@ -336,8 +330,7 @@ body {
 }
 .dark-title em {
   font-style: italic; font-weight: 400;
-  background: linear-gradient(135deg, var(--sky), var(--sun));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--sun-deep);
 }
 .dark-desc {
   font-size: clamp(14px, 1.4vw, 16px); color: rgba(251,248,241,0.6);
@@ -441,8 +434,7 @@ body {
 }
 .section-header-title em {
   font-style: italic; font-weight: 400;
-  background: linear-gradient(135deg, var(--sky-deep), var(--sun));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--sun-deep);
 }
 .section-header-desc {
   font-size: clamp(14px, 1.4vw, 16px); color: rgba(251,248,241,0.6);
@@ -570,8 +562,7 @@ body {
 }
 .contact-heading em {
   font-style: italic; font-weight: 400;
-  background: linear-gradient(135deg, var(--sun-deep), var(--sun));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--sun-deep);
 }
 .contact-desc {
   font-size: clamp(14px, 1.4vw, 16px); color: rgba(251,248,241,0.6);
@@ -611,8 +602,8 @@ body {
 }
 
 .form-submit {
-  background: linear-gradient(135deg, var(--sun-deep), var(--sun));
-  color: var(--sun-ink);
+  background: var(--sun-deep);
+  color: var(--paper);
   font-family: var(--mono);
   font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
   padding: 18px 36px; border: none; border-radius: 6px;
@@ -621,7 +612,7 @@ body {
 }
 .form-submit:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px -8px rgba(233,194,101,0.35);
+  box-shadow: 0 12px 32px -8px rgba(184,134,42,0.3);
 }
 
 /* ═══════════════════════════════════════════
@@ -643,8 +634,7 @@ body {
 }
 .footer-logo span {
   font-style: italic;
-  background: linear-gradient(135deg, var(--sky-deep), var(--sun-deep));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--sun-deep);
 }
 .footer-tagline {
   font-family: var(--mono);
