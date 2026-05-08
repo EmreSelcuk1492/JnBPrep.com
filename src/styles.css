@@ -67,6 +67,7 @@ body {
   backdrop-filter: blur(16px) saturate(1.2);
   -webkit-backdrop-filter: blur(16px) saturate(1.2);
 }
+.nav-inner { position: relative; }
 .nav-inner {
   max-width: var(--content-max);
   margin: 0 auto;
@@ -92,6 +93,31 @@ body {
   transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .nav-links a:hover { color: var(--paper); }
+
+/* Hamburger — hidden on desktop */
+.nav-burger {
+  display: none;
+  background: none; border: none; cursor: pointer;
+  padding: 8px 4px;
+  flex-direction: column; gap: 5px;
+}
+.nav-burger span {
+  display: block;
+  width: 22px; height: 1.5px;
+  background: var(--paper);
+  border-radius: 1px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-burger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.nav-burger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.nav-burger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
 
 /* ═══════════════════════════════════════════
    HERO — split grid layout
@@ -356,8 +382,8 @@ body {
    ═══════════════════════════════════════════ */
 .instructors-section {
   padding: var(--section-pad) var(--gutter);
-  background: var(--ink);
-  border-bottom: 0.5px solid var(--rule);
+  background: #243540;
+  border-bottom: 1px solid rgba(155,199,214,0.06);
 }
 .instructors-header {
   max-width: var(--content-max);
@@ -385,40 +411,67 @@ body {
   line-height: 1.7; max-width: var(--content-narrow);
 }
 
-/* Instructor profiles — clean stacked layout */
+/* Instructor cards — photo + content side-by-side */
 .instructors-list {
   max-width: var(--content-max);
   margin: 0 auto;
 }
 
+.instructor-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.instructor-portrait {
+  position: sticky;
+  top: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: #1a2e3a;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+}
+.instructor-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.instructor-content {
+  padding-top: var(--space-xs);
+}
+
 .instructor-divider {
   border: none;
   height: 0.5px;
-  background: var(--rule);
+  background: rgba(155,199,214,0.08);
   margin: var(--space-xl) 0;
 }
 
 .instructor-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: var(--space-md);
   margin-bottom: var(--space-xs);
 }
 
 .instructor-name {
   font-family: var(--serif);
-  font-size: clamp(28px, 3.5vw, 40px); font-weight: 500;
+  font-size: clamp(26px, 3vw, 36px); font-weight: 500;
   color: var(--paper); letter-spacing: -0.02em;
 }
 
 .uni-logo {
-  height: 36px; width: auto;
+  height: 28px; width: auto;
   object-fit: contain;
-  opacity: 0.7;
+  opacity: 0.6;
+  filter: brightness(0) invert(1);
   transition: opacity 0.2s;
 }
-.uni-logo:hover { opacity: 1; }
+.uni-logo:hover { opacity: 0.9; }
 
 .instructor-title {
   font-family: var(--mono);
@@ -427,11 +480,25 @@ body {
   margin-bottom: var(--space-md);
 }
 
+.instructor-credential {
+  font-family: var(--serif);
+  font-size: 14px; font-weight: 400; font-style: italic;
+  color: var(--sun);
+  margin-bottom: 4px;
+}
+.instructor-research {
+  font-family: var(--mono);
+  font-size: 10px; letter-spacing: 0.06em;
+  color: var(--ink-mute);
+  margin-bottom: var(--space-md);
+  line-height: 1.6;
+}
+
 .instructor-bio {
-  font-size: clamp(14px, 1.4vw, 16px);
-  color: rgba(251,248,241,0.6);
+  font-size: clamp(14.5px, 1.4vw, 16px);
+  color: rgba(251,248,241,0.65);
   line-height: 1.85;
-  max-width: var(--content-narrow);
+  max-width: 580px;
   margin-bottom: var(--space-md);
 }
 
@@ -444,8 +511,8 @@ body {
   font-size: 9px; font-weight: 500; letter-spacing: 0.04em;
   padding: 5px 12px; border-radius: 20px;
 }
-.pill-jin { background: rgba(44,90,122,0.12); color: var(--sky); }
-.pill-anna { background: rgba(233,194,101,0.08); color: var(--sun); }
+.pill-jin { background: rgba(44,90,122,0.14); color: var(--sky); }
+.pill-anna { background: rgba(233,194,101,0.10); color: var(--sun); }
 
 /* Expandable experience */
 .instructor-exp {
@@ -457,7 +524,7 @@ body {
   color: var(--ink-mute);
   cursor: pointer;
   padding: 10px 0;
-  border-top: 0.5px solid var(--rule);
+  border-top: 0.5px solid rgba(155,199,214,0.08);
   list-style: none;
   display: flex; align-items: center; gap: 8px;
   transition: color 0.2s;
@@ -500,7 +567,7 @@ body {
   font-size: 11px; letter-spacing: 0.08em;
   color: var(--ink-mute);
   padding: var(--space-sm) 0 var(--space-xs) 24px;
-  border-top: 0.5px solid var(--rule-soft);
+  border-top: 0.5px solid rgba(155,199,214,0.04);
 }
 
 /* ═══════════════════════════════════════════
@@ -609,22 +676,54 @@ body {
   .details-label { position: static; }
   .program-number { font-size: 40px; }
   .contact-inner { flex-direction: column; align-items: flex-start; }
+  .instructor-card { grid-template-columns: 220px 1fr; gap: var(--space-lg); }
 }
 
 /* ═══════════════════════════════════════════
    RESPONSIVE — mobile
    ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .nav-burger { display: flex; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(14,26,36,0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 0.5px solid var(--rule);
+    padding: var(--space-sm) var(--gutter);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li {
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .nav-links li:last-child { border-bottom: none; }
+  .nav-links a {
+    display: block;
+    padding: 14px 0;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+  }
+}
+
 @media (max-width: 640px) {
-  .nav-links { gap: 16px; }
-  .nav-links li { font-size: 10px; }
   .hero-cta-row { flex-direction: column; align-items: stretch; gap: 12px; }
   .hero-cta { text-align: center; }
   .prog-card-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
   .contact-mailto { padding: 24px 32px; }
+  .instructor-card {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+  .instructor-portrait {
+    position: static;
+    max-width: 240px;
+    aspect-ratio: 1 / 1;
+    border-radius: 6px;
+  }
   .instructor-header { flex-wrap: wrap; }
-}
-
-@media (max-width: 480px) {
-  .nav-links { gap: 12px; }
-  .nav-links li { font-size: 9px; letter-spacing: 0.1em; }
 }
